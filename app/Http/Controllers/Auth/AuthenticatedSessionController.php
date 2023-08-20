@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        //Ridirect validate
+        //Redirect validate
         $user = User::find(auth()->user()->id);
         if ($user->IsAdmin) {
             return redirect('/administrator');

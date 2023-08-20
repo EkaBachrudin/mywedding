@@ -31,15 +31,18 @@ class AdminContoller extends Controller
                 'name.*' => ['required', 'string', 'max:255']
             ]);
 
-            $url_param = Str::random(6);
+            $url_param = Str::random(8);
+            $underscore_replace = str_replace(' ', '_', $value);
 
             $user = User::create([
+                'random_string' => $url_param,
                 'name' => $value,
                 'email' => '-',
                 'address' => '-',
-                'attendance' => 'no attendance',
+                'attendance' => '-',
+                'atten_confirm' => '-',
                 'url' => 'https://nursa.fun/wedding/' . $url_param,
-                'password' => Hash::make(Crypt::encryptString($url_param)),
+                'password' => Hash::make($underscore_replace . $url_param),
             ]);
 
             $roleIds = [2];

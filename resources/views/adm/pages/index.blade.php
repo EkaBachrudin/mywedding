@@ -30,6 +30,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
+                                    <th>Confirm</th>
                                     <th>Attendance</th>
                                     <th>URL</th>
                                     <th class="text-center">Action</th>
@@ -40,12 +41,9 @@
                                <tr>
                                     <td>{{$data->id}}</td>
                                     <td>{{$data->name}}</td>
-                                    @if ($data->attendance === 'no attendance')
-                                        <td> <span class="btn btn-sm btn-danger">{{$data->attendance}}</span></td>
-                                    @endif
-                                    <td>
-                                        {{$data->url}}
-                                    </td>
+                                    <td> <span>{{$data->atten_confirm}}</span></td>
+                                    <td> <span>{{$data->attendance}}</span></td>
+                                    <td> {{$data->url}} </td>
                                     <td class="text-center">
                                         <i class="fas fa-edit text-info"></i>
                                     </td>
@@ -75,11 +73,11 @@
                     @csrf
                     <div class="field_wrapper">
                         <div>
-                            <input type="text" class="name-input" name="name[]" value="" required/>
+                            <input type="text" class="name-input" name="name[]" value="" placeholder="Enter guest name..." required autocomplete='off'/>
                             <a href="javascript:void(0);" class="add_button" title="Add field"> <i class="fas fa-plus text-info ml-2"></i></a>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-sm"> Add guests </button>
+                    <button type="submit" class="btn btn-primary btn-sm mt-3"> Add guests </button>
                 </form>
             </div>
         </div>
@@ -112,7 +110,7 @@
             var maxField = 10; //Input fields increment limitation
             var addButton = $('.add_button'); //Add button selector
             var wrapper = $('.field_wrapper'); //Input field wrapper
-            var fieldHTML = '<div><input type="text" name="name[]" class="name-input" value="" required/><a href="javascript:void(0);" class="remove_button"><i class="fas fa-trash text-danger ml-2"></a></div>'; //New input field html
+            var fieldHTML = '<div><input type="text" name="name[]" class="name-input" value="" placeholder="Enter guest name..." required autocomplete="off"/><a href="javascript:void(0);" class="remove_button"><i class="fas fa-trash text-danger ml-2"></a></div>'; //New input field html
             var x = 1; //Initial field counter is 1
 
             //Once add button is clicked

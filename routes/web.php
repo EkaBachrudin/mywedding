@@ -15,16 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 //Admin Area
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/', [Controller::class, 'index']);
     Route::get('/administrator', [AdminContoller::class, 'index']);
     Route::post('createguest', [AdminContoller::class, 'customRegistration']);
-});
-
-//User Area
-Route::group(['middleware' => ['auth']], function () {
 });
 
 require __DIR__ . '/auth.php';

@@ -12,6 +12,6 @@ class Controller extends BaseController
 
     public function index()
     {
-        return redirect('/login');
+        return redirect('/administrator');
     }
 }
