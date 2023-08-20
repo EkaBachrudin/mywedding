@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\adm\AdminContoller;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+//Admin Area
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/', [Controller::class, 'index']);
+    Route::get('/administrator', [AdminContoller::class, 'index']);
+    Route::post('createguest', [AdminContoller::class, 'customRegistration']);
 });
+
+//User Area
+Route::group(['middleware' => ['auth']], function () {
+});
+
+require __DIR__ . '/auth.php';
