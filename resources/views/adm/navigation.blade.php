@@ -5,10 +5,6 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <form method="POST" action="{{ route('logout') }}">
-        @csrf
-          <a href="{{route('logout')}}" class="nav-link" onclick="event.preventDefault();this.closest('form').submit();">Logout</a>
-      </form>
     </ul>
 
 
@@ -16,7 +12,7 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <aside class="position-fixed main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link text-center"> <span class="brand-text font-weight-light">ADMINISTRATOR</span>
     </a>
@@ -43,6 +39,10 @@
             <a href="/administrator" class="nav-link"><i class="nav-icon fas fa-users me-5"></i><p>All Guest</p></a>
           </li>
         </ul>
+        <form method="POST" action="{{ route('logout') }}" style="position: absolute;bottom: 20px">
+            @csrf
+            <a style="width: fit-content" href="{{route('logout')}}" class="logout-btn btn btn-sm btn-danger" onclick="event.preventDefault();check = confirm('Do you really want to logout?');if(check){this.closest('form').submit();}">Logout</a>
+        </form>
       </nav>
     </div>
   </aside>

@@ -18,8 +18,11 @@ use Illuminate\Support\Facades\Route;
 //Admin Area
 Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('/', [Controller::class, 'index']);
-    Route::get('/administrator', [AdminContoller::class, 'index']);
+    Route::get('/administrator', [AdminContoller::class, 'administrator']);
     Route::post('createguest', [AdminContoller::class, 'customRegistration']);
+    Route::get('getguest/{id}', [AdminContoller::class, 'getGust']);
+    Route::post('updateguest/{id}', [AdminContoller::class, 'updateGuest']);
+    Route::post('deleteguests', [AdminContoller::class, 'deleteGuest']);
 });
 
 require __DIR__ . '/auth.php';
