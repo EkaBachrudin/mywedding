@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('getuser/{random_string}', [UserController::class, 'getUser']);
+Route::post('/send-greetings', [UserController::class, 'sendGreetings']);
+
 
 //User Area
 Route::group(['middleware' => ['auth']], function () {

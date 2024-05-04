@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('address')->nullable();
             $table->string('atten_confirm')->nullable();
             $table->string('attendance')->nullable();
+            $table->text('greetings')->nullable();
             $table->text('url')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

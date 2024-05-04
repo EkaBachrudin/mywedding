@@ -77,7 +77,7 @@ class AdminContoller extends Controller
                 'address' => '-',
                 'attendance' => '-',
                 'atten_confirm' => '-',
-                'url' => 'https://nursa.fun/wedding/' . $url_param,
+                'url' => 'https://nursa.fun/ana-eka/' . $url_param,
                 'password' => Hash::make($underscore_replace . $url_param),
             ]);
 

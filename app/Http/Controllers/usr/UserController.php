@@ -5,8 +5,7 @@ namespace App\Http\Controllers\usr;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -24,5 +23,34 @@ class UserController extends Controller
                 'message' => 'Guest not found'
             ], 417);
         }
+    }
+
+    public function sendGreetings(Request $request)
+    {
+        $random_string = $request['delinda'];
+
+        $user = DB::table('users')->where('random_string', $random_string)->first();
+
+        if ($user) {
+
+            $sanitizedGreetings = $this->sanitizeInput($request['greetings']);
+
+            $user->greetings = $sanitizedGreetings;
+            $user->save();
+
+            return response()->json([
+                'message' => 'successfully sent!'
+            ]);
+        } else {
+
+            return response()->json([
+                'message' => 'Validation failed!'
+            ], 400);
+        }
+    }
+
+    function sanitizeInput($input)
+    {
+        return trim(htmlspecialchars($input));
     }
 }
