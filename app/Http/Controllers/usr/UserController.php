@@ -5,7 +5,6 @@ namespace App\Http\Controllers\usr;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -25,32 +24,51 @@ class UserController extends Controller
         }
     }
 
-    public function sendGreetings(Request $request)
+    public function countAttenConfirm()
     {
-        $random_string = $request['delinda'];
+        $count = User::where('atten_confirm', 'confirmed')->count();
 
-        $user = DB::table('users')->where('random_string', $random_string)->first();
+        return response([
+            'message' => 'ok',
+            'data' => $count
+        ], 200);
+    }
+
+    public function attentConfirm(Request $request)
+    {
+        $randomString = $request['delinda'];
+
+        $user = User::where('random_string', $randomString)->first();
 
         if ($user) {
+            $user->update(['atten_confirm' => 'confirmed']);
 
-            $sanitizedGreetings = $this->sanitizeInput($request['greetings']);
-
-            $user->greetings = $sanitizedGreetings;
-            $user->save();
-
-            return response()->json([
-                'message' => 'successfully sent!'
-            ]);
+            return response([
+                'message' => 'confirm success'
+            ], 200);
         } else {
-
-            return response()->json([
-                'message' => 'Validation failed!'
+            return response([
+                'message' => 'error'
             ], 400);
         }
     }
 
-    function sanitizeInput($input)
+    public function attentUnConfirm(Request $request)
     {
-        return trim(htmlspecialchars($input));
+        $randomString = $request['delinda'];
+
+        $user = User::where('random_string', $randomString)->first();
+
+        if ($user) {
+            $user->update(['atten_confirm' => '-']);
+
+            return response([
+                'message' => 'unconfirm success'
+            ], 200);
+        } else {
+            return response([
+                'message' => 'error'
+            ], 400);
+        }
     }
 }

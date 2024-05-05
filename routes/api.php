@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\usr\GreetingsController;
 use App\Http\Controllers\usr\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('getuser/{random_string}', [UserController::class, 'getUser']);
-Route::post('/send-greetings', [UserController::class, 'sendGreetings']);
+Route::get('count-atten', [UserController::class, 'countAttenConfirm']);
+Route::post('attent-confirm', [UserController::class, 'attentConfirm']);
+Route::post('attent-unconfirm', [UserController::class, 'attentUnConfirm']);
+
+Route::get('greetings', [GreetingsController::class, 'getAllGreetings']);
+Route::post('greeting', [GreetingsController::class, 'sendGreetings']);
+
+
 
 
 //User Area
