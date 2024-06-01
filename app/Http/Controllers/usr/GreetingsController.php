@@ -18,6 +18,7 @@ class GreetingsController extends Controller
 
             array_push($dataResponse, [
                 'username' => $greetings->user->name,
+                'atten_confirm' => $greetings->user->atten_confirm,
                 'greetings' => $greetings->greetings
             ]);
         }
