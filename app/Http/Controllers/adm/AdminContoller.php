@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\adm;
 
 use App\Http\Controllers\Controller;
+use App\Models\Greetings;
 use App\Models\User;
 use App\Models\UserRole;
 use Illuminate\Http\Request;
@@ -93,6 +94,7 @@ class AdminContoller extends Controller
     {
         UserRole::whereIn('user_id', $request->guests)->delete();
         User::whereIn('id', $request->guests)->delete();
+        Greetings::whereIn('user_id', $request->guests)->delete();
         return response([
             'message' => 'Success delete guests',
         ], 200);
