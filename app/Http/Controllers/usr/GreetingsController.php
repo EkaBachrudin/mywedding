@@ -25,7 +25,7 @@ class GreetingsController extends Controller
         return response()->json([
             'message' => 'success get greetings data!',
             'data' => $dataResponse
-        ], 400);
+        ]);
     }
 
     public function sendGreetings(Request $request)
