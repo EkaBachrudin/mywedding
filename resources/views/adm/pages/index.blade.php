@@ -95,7 +95,7 @@
                                     <td class="guest-id">{{$data->id}}</td>
                                     <td class="guest-name">{{$data->name}}</td>
                                     <td class="guest-atten-confirm">{{$data->atten_confirm}}</td>
-                                    <td class="guest-attendance">{{$data->attendance}}</td>
+                                    <td class="guest-attendance"><button onclick="copyToClipboard({{ $data->name }}, {{ $data->url }})">COPY TEXT</button></td>
                                     <td class="guest-url">{{$data->url}} </td>
                                     <td class="text-center">
                                         <i class="fas fa-edit text-info" onclick="getGuest({{$data->id}})"></i>
@@ -311,6 +311,25 @@
 
             request.fail(function( jqXHR, textStatus ) {
                 toastr.error('Delete guests failed !');
+            });
+        }
+
+        function copyToClipboard(name, url) {
+            var name = name;
+            var weddingLink = url;
+            var text = `Kepada Yth.\n` +
+                       `*${name}*\n\n` +
+                       `Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i, pada acara tasyakuran pernikahan kami\n\n` +
+                       `*The Wedding of Eka & Ana*\n` +
+                       `Hari/Tgl : Minggu, 23 Juni 2024\n` +
+                       `Alamat :  Papandayan Ballroom Plaza Metropolitan, Jl. Sultan Hasanudin lantai 2, Bekasi Regency\n\n` +
+                       `Info lebih lengkap klik link di bawah ini\n` +
+                       `${weddingLink}\n\n` +
+                       `Atas kehadiran dan do'a restu yang diberikan, kami ucapkan terima kasih.\n\n` +
+                       `Kami yang berbahagia,\n` +
+                       `*Eka & Ana*`;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Invitation text copied to clipboard!');
             });
         }
     </script>
