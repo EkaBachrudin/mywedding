@@ -95,7 +95,7 @@
                                     <td class="guest-id">{{$data->id}}</td>
                                     <td class="guest-name">{{$data->name}}</td>
                                     <td class="guest-atten-confirm">{{$data->atten_confirm}}</td>
-                                    <td class="guest-attendance"><button onclick="copyToClipboard({{ $data->name }}, {{ $data->url }})">COPY TEXT</button></td>
+                                    <td class="guest-attendance"><button onclick="copyToClipboard('{{ $data->name }}', '{{ $data->url }}')">COPY TEXT</button></td>
                                     <td class="guest-url">{{$data->url}} </td>
                                     <td class="text-center">
                                         <i class="fas fa-edit text-info" onclick="getGuest({{$data->id}})"></i>
