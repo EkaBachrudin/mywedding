@@ -322,6 +322,7 @@
                        `Tanpa mengurangi rasa hormat, kami bermaksud mengundang Bapak/Ibu/Saudara/i, pada acara tasyakuran pernikahan kami\n\n` +
                        `*The Wedding of Eka & Ana*\n` +
                        `Hari/Tgl : Minggu, 23 Juni 2024\n` +
+                       `Pukul : 7.30 - 12.30 WIB\n` +
                        `Alamat :  Papandayan Ballroom Plaza Metropolitan, Jl. Sultan Hasanudin lantai 2, Bekasi Regency\n\n` +
                        `Info lebih lengkap klik link di bawah ini\n` +
                        `${weddingLink}\n\n` +
